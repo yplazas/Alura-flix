@@ -1,10 +1,11 @@
-function CampoTextEdit({ label, valor, placeholder }) {
+function CampoTextEdit({ label, valor, setValor, placeholder }) {
   return (
     <div className="campo-texto-edit">
       <label>{label}</label>
       <input
         type="text"
-        defaultValue={valor}
+        value={valor}
+        onChange={(e) => setValor(e.target.value)}
         placeholder={placeholder}
       />
     </div>

@@ -1,8 +1,13 @@
-function TextAreaEdit({ label, placeholder, valor, color }) {
+function TextAreaEdit({ label, placeholder, valor, setValor, color }) {
   return (
     <div className="text-area-edit">
       <label>{label}</label>
-      <textarea placeholder={placeholder} color={color} defaultValue={valor} />
+      <textarea
+        placeholder={placeholder}
+        color={color}
+        value={valor}
+        onChange={(e) => setValor(e.target.value)}
+      />
     </div>
   );
 }

@@ -27,8 +27,8 @@ function NuevaCategoria({
     <>
       <Header />
 
-      <div className="container-nuevo-video">
-        <div className="titulo-nuevo-video">
+      <div className="container-nuevo-categoria">
+        <div className="titulo-nuevo-categoria">
           <h2>NUEVA CATEGORIA</h2>
           <p>Complete el formulario para crear una nueva categoria</p>
         </div>
@@ -38,7 +38,7 @@ function NuevaCategoria({
 
           <form
             onSubmit={enviarDatosCategoria}
-            className="formulario-nuevo-video"
+            className="formulario-nuevo-categoria"
           >
             <div className="campo-container">
               <CampoTexto

@@ -4,17 +4,39 @@ import TextAreaEdit from "./TextAreaEdit";
 import "./EditarVideo.css";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import CampoSelectEdit from "./CampoSelectEdit";
+import { useState } from "react";
 
 function EditarVideo({
-  isOpen,
   closeModal,
   videoSeleccionado,
+  setVideoSeleccionado,
   categorias,
+  actualizarVideo,
 }) {
-  if (!isOpen) return null;
-
-  const { titulo, categoria, urlImagen, urlVideo, descripcion } =
+  const { id, titulo, categoria, urlImagen, urlVideo, descripcion } =
     videoSeleccionado;
+
+  const [nuevoTitulo, setNuevoTitulo] = useState(titulo);
+  const [nuevaUrlVideo, setNuevaUrlVideo] = useState(urlVideo);
+  const [nuevaUrlImagen, setNuevaUrlImagen] = useState(urlImagen);
+  const [nuevaDescripcion, setNuevaDescripcion] = useState(descripcion);
+  const [nuevaCategoria, setNuevaCategoria] = useState(categoria);
+
+  const actualizarDatosVideo = (e) => {
+    e.preventDefault();
+    const datosVideo = {
+      id,
+      titulo: nuevoTitulo,
+      categoria: nuevaCategoria,
+      urlImagen: nuevaUrlImagen,
+      urlVideo: nuevaUrlVideo,
+      descripcion: nuevaDescripcion,
+    };
+    setVideoSeleccionado(datosVideo);
+    actualizarVideo(datosVideo);
+    alert("Datos del video actualizados");
+    closeModal();
+  };
 
   return (
     <div className="modal-overlay">
@@ -24,31 +46,39 @@ function EditarVideo({
 
           <h3>Editar Card</h3>
 
-          <form onSubmit={[]} className="formulario-editar-video">
+          <form
+            onSubmit={actualizarDatosVideo}
+            className="formulario-editar-video"
+          >
             <CampoTextEdit
               label="Titulo"
               placeholder="ingrese el título"
-              valor={titulo}
+              valor={nuevoTitulo}
+              setValor={setNuevoTitulo}
             />
             <CampoSelectEdit
               label="Categoria"
               opciones={categorias}
-              valor={categoria}
+              valor={nuevaCategoria}
+              setValor={setNuevaCategoria}
             />
             <CampoTextEdit
               label="URL imagen"
               placeholder="ingrese la url de la imagen"
-              valor={urlImagen}
+              valor={nuevaUrlImagen}
+              setValor={setNuevaUrlImagen}
             />
             <CampoTextEdit
               label="URL video"
               placeholder="ingrese la url del video"
-              valor={urlVideo}
+              valor={nuevaUrlVideo}
+              setValor={setNuevaUrlVideo}
             />
             <TextAreaEdit
               label="Descripcion"
               placeholder="¿De qué se trata este vídeo?"
-              valor={descripcion}
+              valor={nuevaDescripcion}
+              setValor={setNuevaDescripcion}
             />
 
             <div className="boton-container-edit">

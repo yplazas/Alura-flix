@@ -70,6 +70,11 @@ function App() {
     setColor("");
   };
 
+  const actualizarVideo = (datosVideo) => {
+    const updatedVideo = videos.map((video) => video.id === datosVideo.id ? { ...video, ...datosVideo } : video);
+    setVideos(updatedVideo)
+  };
+
   return (
     <>
       <BrowserRouter>
@@ -86,6 +91,7 @@ function App() {
                 categorias={categorias}
                 videos={videos}
                 eliminarVideo={eliminarVideo}
+                actualizarVideo={actualizarVideo}
               />
             }
           />

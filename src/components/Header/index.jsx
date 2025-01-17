@@ -20,6 +20,20 @@ function Header() {
           </NavLink>
         </ul>
       </nav>
+      <div
+        className="hamburger"
+        onClick={() => {
+          const navLinks = document.querySelector(".nav");
+          const hamburger = document.querySelector(".hamburger");
+
+          navLinks.classList.toggle("show");
+          hamburger.classList.toggle("active");
+        }}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </header>
   );
 }

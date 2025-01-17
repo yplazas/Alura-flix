@@ -13,17 +13,21 @@ function Home({
   categorias,
   videos,
   eliminarVideo,
+  actualizarVideo
 }) {
   return (
     <div className="container">
       <Header />
-      <Banner />
-      <EditarVideo
-        isOpen={isModalOpen}
-        closeModal={closeModal}
-        videoSeleccionado={videoSeleccionado}
-        categorias={categorias}
-      />
+      <Banner categorias={categorias}/>
+      {isModalOpen ?
+        <EditarVideo
+          closeModal={closeModal}
+          videoSeleccionado={videoSeleccionado}
+          setVideoSeleccionado={setVideoSeleccionado}
+          categorias={categorias}
+          actualizarVideo={actualizarVideo}
+        /> :
+        <></>}
       {categorias.map((categoria) => (
         <Categorias
           key={categoria.id}

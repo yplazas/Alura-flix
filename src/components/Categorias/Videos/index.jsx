@@ -1,5 +1,5 @@
 import hexToRgba from "hex-to-rgba";
-import { MdOutlineRemoveRedEye, MdEdit, MdDeleteForever } from "react-icons/md";
+import { MdEdit, MdDeleteForever } from "react-icons/md";
 // import EditarVideo from "../../EditarVideo";
 
 function Videos({
@@ -28,10 +28,10 @@ function Videos({
       >
         <p>{titulo}</p>
         <div className="video-acciones">
-          <div className="accion">
+          {/* <div className="accion">
             <MdOutlineRemoveRedEye />
             <span>Ver</span>
-          </div>
+          </div> */}
           <div
             className="accion"
             onClick={() => {

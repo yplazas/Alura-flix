@@ -1,9 +1,9 @@
 import BannerContent from "./BannerContent";
 
-function Banner() {
+function Banner(props) {
   return (
     <div className="banner">
-      <BannerContent />
+      <BannerContent {...props}/>
     </div>
   );
 }
